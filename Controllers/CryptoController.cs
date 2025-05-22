@@ -7,7 +7,8 @@ namespace GenovaAPI.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class CryptoController  : ControllerBase
-{
+{  
+    private static readonly List<CryptoItem> _cryptoItems = new();
 
     private readonly BinanceService _binanceService;
     public CryptoController()
@@ -18,25 +19,31 @@ public class CryptoController  : ControllerBase
     [HttpGet("latest")]
     public async Task<IActionResult> GetLatest()
     {
-        var symbols = new List<string> { "BTC", "ETH", "LTC" };
-        
-        var tasks = symbols.Select(async symbol =>
+        var list = new List<CryptoItem>
         {
-
-            var price = await _binanceService.GetCryptoPriceAsync(symbol);
-            return new CryptoResult
+            new CryptoItem
             {
-                Symbol = symbol,
-                Price = price
-            };
+                Icon = "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
+                ActionTitle = "Bought Bitcoin",
+                FiatValue = "$145.00",
+                CryptoValue = "0.0034 BTC",
+                TimeAgo = "2h ago"
+            },
+            new CryptoItem
+            {
+                Icon = "https://cryptologos.cc/logos/ethereum-eth-logo.png",
+                ActionTitle = "Bought Ethereum",
+                FiatValue = "$115.00",
+                CryptoValue = "0.0013 ETH",
+                TimeAgo = "1h ago"
+            }
+        };
 
-        });
-        var result = await Task.WhenAll(tasks);
-        return Ok(result); 
+        return Ok(list);
     }
 
     [HttpGet("history/{symbol}")]
-    public async Task<IActionResult> GetHistoru(string symbol, [FromQuery] int day = 7)
+    public async Task<IActionResult> GetHistory(string symbol, [FromQuery] int day = 7)
     {
         var coinGeckoService = new CoinGeckoServices();
         var data = await coinGeckoService.GetHistoricalPricesAsync(symbol, day);
@@ -48,5 +55,22 @@ public class CryptoController  : ControllerBase
         }).ToList();
         
         return Ok(result);
+        
+    }
+    
+    [HttpGet("all")]
+    public IActionResult GetAll()
+    {
+        return Ok(_cryptoItems);
+    }
+    
+    [HttpPost("add")]
+    public IActionResult AddCrypto([FromBody] CryptoItem item)
+    {
+        if (item == null)
+            return BadRequest("Item inválido.");
+
+        _cryptoItems.Add(item);
+        return Ok(item);
     }
 }

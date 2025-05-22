@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GenovaAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc16fd93361a55cd364975f1768e8443fa10b766")]
 [assembly: System.Reflection.AssemblyProductAttribute("GenovaAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GenovaAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

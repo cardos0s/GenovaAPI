@@ -97,3 +97,4 @@
 /Volumes/Aplicativos/Aplicativos/Genova/GenovaAPI/GenovaAPI/obj/Debug/net9.0/GenovaAPI.csproj.AssemblyReference.cache
 /Volumes/Aplicativos/Aplicativos/Genova/GenovaAPI/GenovaAPI/obj/Debug/net9.0/GenovaAPI.MvcApplicationPartsAssemblyInfo.cs
 /Volumes/Aplicativos/Aplicativos/Genova/GenovaAPI/GenovaAPI/obj/Debug/net9.0/GenovaAPI.csproj.Up2Date
+/Volumes/Aplicativos/Aplicativos/Genova/GenovaAPI/GenovaAPI/obj/Debug/net9.0/GenovaAPI.sourcelink.json
